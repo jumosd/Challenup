@@ -4,5 +4,16 @@ h1{
 
 *{
 
-    color: blue;
+    color: rgb(186, 186, 247);
+}
+
+.header-right{
+    display: flex;
+    flex-direction: row;
+}
+.footter{
+    width: 100%;
+    height: auto;
+    border:  1px solid black;
+    background-color: gray;
 }

@@ -1,0 +1,40 @@
+{% load static %}
+<div class="container main">
+    <!-- 로그인 했을때  -->
+    <nav class="bg-light">
+        <ul class="navbar">
+            <li>
+                <a href="{% url 'home' %}">
+                <div class="logo-box">
+                    <img id="logo-img" src="{% static 'image/logo.jpg'%}" alt="logo" width="50px">
+                    <span id="logo-name">챌린업</span>
+                </div>
+            </a>
+            </li>
+
+            <li>
+                <div class="header-right">
+                    <div class="search-input">
+                        <form class="form-inline" style="justify-content:flex-end">
+                            <div class="input-group">
+                                <input class="form-control nav-link" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn " type="submit" id="serch-btn"
+                                        onclick="alert('응안되~')">검색</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div >
+                        <a class="nav-link" id="my-setup" href="{% url 'acount:login' %}">로그인</a>
+                    </div>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+    </nav>
+</div>

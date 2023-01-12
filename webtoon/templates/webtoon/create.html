@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'webtoon:webtooncreate' %}">
+
+    <div>
+        <label for="">필명</label>
+        <input type="text" name="" id="">
+    </div>
+
+    <div>
+        <label for="">작품제목</label>
+        <input type="text" name="" id="">
+    </div>
+    <div>
+        <label for="">장르</label>
+        <input type="text" name="" id="">
+    </div>
+    <div>
+        <label for="">작품태그</label>
+        <input type="text" name="" id="">
+    </div>
+    <div>
+        <label for="">표지</label>
+        <input type="text" name="" id="">
+    </div>
+
+
+</form>
+
+
+{% endblock %}
