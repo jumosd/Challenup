@@ -8,3 +8,4 @@ class User(models.Model):
     user_password = models.CharField(max_length=20)
 
 
+

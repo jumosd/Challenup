@@ -8,7 +8,6 @@ def webtoon_main(request):
 def webtoon_detail(request):
     return render(request, 'webtoon/detail.html')
 
-
 def webtoon_create(request):
     
     return render(request, "webtoon/create.html")

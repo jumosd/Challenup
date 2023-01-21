@@ -1,11 +1,4 @@
-h1{
-    color: aqua;
-}
 
-*{
-
-    color: rgb(186, 186, 247);
-}
 
 .header-right{
     display: flex;
@@ -17,3 +10,78 @@ h1{
     border:  1px solid black;
     background-color: gray;
 }
+.aticle{
+ width: 1200px;
+
+}
+
+.home-main-top{
+    width: 100%;
+    height:  150px;
+    display: flex;
+    
+}
+.home-main-right-webtoon, .home-main-right-webnovel {
+    
+    flex-wrap: wrap;
+    border: 1px solid gray;
+    background-color: darkgray;
+    border-radius: 5px;
+}
+.test{
+    display: flex;
+    flex-wrap: wrap;
+}
+.carousel-item-div{
+    height: 300px;
+}
+.home-main-top-name{
+ font-weight: 700;
+ font-size: 1.5em;
+}
+#matching-card-category{
+    font-size:1.5em;
+    font-weight: 600;
+}
+.matchong-card-status{
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(95,157,234);
+}
+
+.matching-card{
+    width: 200px;
+    border: 1px solid skyblue;
+    margin-right: 1em;
+}
+.matching-card > .crad-text {
+   margin: 0;
+   border: 1px sold #ddd;
+}
+#matching-card{
+    padding: 0.5rem 0.5rem;
+}
+.matching-card:hover{
+    background-color: rgb(200, 200, 200);
+
+}
+
+.matching-card-top{
+    display: flex;
+    justify-content:space-between;
+}
+
+.matching-card-bottom{
+    display: flex;   
+}
+
+.matching-card-icon > img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+    object-fit: cover;
+    
+}
+
