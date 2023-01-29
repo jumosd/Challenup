@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'webtoon:webtooncreate' %}">
+<form action="{% url 'webtoon:webtooncreate' %}" enctype="multipart/form-data">
 
     <div>
         <label for="">필명</label>

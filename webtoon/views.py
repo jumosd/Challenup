@@ -9,8 +9,12 @@ def webtoon_detail(request):
     return render(request, 'webtoon/detail.html')
 
 def webtoon_create(request):
-    
-    return render(request, "webtoon/create.html")
+    if request.method == "POST":
+        
+        pass
+    else:
+
+        return render(request, "webtoon/create.html")
 
 def webtoon_update(request):
     pass

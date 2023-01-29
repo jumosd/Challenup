@@ -1,26 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import User
-
+from .forms import UserForm
 # Create your views here.
 
 
 def login_view(request):
-
-    return render(request, 'login/index.html')
-
-def signup_view(request):
-
-    if request.method == "POST":
-            if request.POST['user_password'] == request.POST['user_password2']: 
-                user = request.POST
-                User.objects.create(
-                    user_id=user['user_id'],
-                    user_name=user['user_name'],
-                    user_password=user['user_password'],)
-                
-                return render(request, 'home.html')
-            
-        
+    if request.method == 'POST' :
+        pass
     
     else:
-        return render (request, "signup/index.html")
+
+        return render(request, 'login/index.html')
+
+def signup_view(request):
+    if request.method == "POST":
+        signup_form = UserForm(request.POST)
+        if signup_form.is_valid():
+            User.objects.create
+            return redirect('home')
+    
+    else:
+        signup_form = UserForm()
+        return render (request, "signup/index.html", {'signup_form': signup_form})

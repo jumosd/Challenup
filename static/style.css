@@ -14,6 +14,13 @@
  width: 1200px;
 
 }
+.content-card{
+    transition: transform 1s;
+}
+.content-card :hover{
+
+    transform:scale(1.03);   
+}
 
 .home-main-top{
     width: 100%;
@@ -28,16 +35,17 @@
     background-color: darkgray;
     border-radius: 5px;
 }
-.test{
+.item-right-align{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 1em;
+ 
 }
-.carousel-item-div{
-    height: 300px;
-}
-.home-main-top-name{
- font-weight: 700;
- font-size: 1.5em;
+
+
+.carousel-item-size {
+    height: 450px;
+    /* object-fit: cover; */
 }
 #matching-card-category{
     font-size:1.5em;
@@ -54,6 +62,9 @@
     width: 200px;
     border: 1px solid skyblue;
     margin-right: 1em;
+}
+.matching-card:hover{
+    transform: scale(1.03);
 }
 .matching-card > .crad-text {
    margin: 0;
@@ -80,8 +91,6 @@
     border-radius: 50%;
     width: 50px;
     height: 50px;
-
     object-fit: cover;
-    
 }
 

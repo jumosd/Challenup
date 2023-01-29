@@ -1,0 +1,22 @@
+{
+    
+    "powermode.enabled": true,
+    "powermode.presets": "magic",
+    "powermode.shake.enabled": false,
+    "background.useDefault": false,
+    "background.customImages": [
+        "/Users/hajinsu/바탕화면/42.jpg",
+    ],
+    "background.style": {
+        "content": "''",
+        "pointer-events": "none",
+        "position": "absolute",
+        "z-index": "99999",
+        "width": "100%",
+        "background-position": "center",
+        "opacity": 0.2,
+        "background-size": "cover"
+    },
+    
+
+}
