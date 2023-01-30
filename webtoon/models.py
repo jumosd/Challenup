@@ -1,38 +1,53 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-
+from account.models import User
 # Create your models here.
 
+#장고패턴임  생성되는 클래스마다 쓰는게아니라 이걸 상속받으면됨
+class TimeStamedModel(models.Model):
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_ap = models.DateTimeField(auto_now_add=True)
+    # 아래의 옵션을 추가하면 타임스탬프모델은 테이블에 추가되지않음. 
+    class Meta:
+        abstract = True
 
-class Webtoon(models.Model):
-    user_nick = models.CharField(max_length=20)
+
+class Webtoon(TimeStamedModel):
+    author = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name = "webtoon_author")
+    penname = models.CharField(max_length=20)
     title = models.CharField(max_length=20)
-    genre = models.CharField(max_length=20)
-    tag = models.CharField(max_length=20)
+    description = models.CharField(max_length=500)
     thumbnail = models.ImageField()
+    webtoon_like = models.ManyToManyField(User, related_name= "webtoon_like")
+
+# 댓글노출여부 - 댓글기능후제작
+# 웹툰소개글 -
+# 상태
+# 태그
+# 독점여부
+# 웹툰장르
+# 웹툰표지(썸네일)
+# 웹툰
+# 날짜
+# 추천
+# 비추천
+# 구독버튼
 
 
-
-# class Category(models.Model):
-#     #판타지
-#     fantasy = models.CharField(max_length=20, )
-#     #현대물
-#     modern = models.CharField(max_length=20, )
-#     #로맨스
-#     romance = models.CharField(max_length=20, )
-#     #무협/사극
-#     martial_arts  = models.CharField(max_length=20, )
-#     #일상/개그
-#     daily = models.CharField(max_length=20, )
-#     #스릴러
-#     thriller = models.CharField(max_length=20, )
-#     #스릴러
-#     sports = models.CharField(max_length=20, )
-
+class Comment(TimeStamedModel):
+    author = models.ForeignKey(
+        User,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name = "webtoon_author")
+    webtoon = models.ForeignKey(
+        Webtoon,
+        on_delete=models.CASCADE,
+        related_name="webtoon_title")
+    
+    commnet = models.TextField(max_length=1000, blank=True)
+    
+    # webtoon
+    # contents
 
 
-
-# work = Category.objects.creat(Fantasy = "혁의 소설")
-# work2 = Category.objects.create(genre6 = "깜피의만화")
-# work3 = Category.objects.create(genre4 = "진수의 소설")
-# work4 = Category.objects.create(genre7 = "나의의19금")

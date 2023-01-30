@@ -5,7 +5,7 @@
     "powermode.shake.enabled": false,
     "background.useDefault": false,
     "background.customImages": [
-        "/Users/hajinsu/바탕화면/42.jpg",
+        // "/Users/hajinsu/바탕화면/42.jpg",
     ],
     "background.style": {
         "content": "''",
