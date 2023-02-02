@@ -17,8 +17,25 @@ class Webtoon(TimeStamedModel):
     penname = models.CharField(max_length=20)
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=500)
+    image = models.ImageField(blank=True)
     thumbnail = models.ImageField()
+
     webtoon_like = models.ManyToManyField(User, related_name= "webtoon_like")
+
+class Comment(TimeStamedModel):
+    author = models.ForeignKey(
+        User,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name = "comment_author")
+    
+    webtoon = models.ForeignKey(
+        Webtoon,
+        on_delete=models.CASCADE,
+        related_name="comment_webtoon")
+    
+    comment = models.TextField(max_length=1000, blank=True)
+    
 
 # 댓글노출여부 - 댓글기능후제작
 # 웹툰소개글 -
@@ -32,22 +49,4 @@ class Webtoon(TimeStamedModel):
 # 추천
 # 비추천
 # 구독버튼
-
-
-class Comment(TimeStamedModel):
-    author = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.CASCADE,
-        related_name = "webtoon_author")
-    webtoon = models.ForeignKey(
-        Webtoon,
-        on_delete=models.CASCADE,
-        related_name="webtoon_title")
-    
-    commnet = models.TextField(max_length=1000, blank=True)
-    
-    # webtoon
-    # contents
-
 
