@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import logout
 #로그인 함수형으로 구현
 from django.contrib.auth import authenticate, login
-
+from .forms import UserForm
 
 def login_view(request):
 
@@ -25,7 +25,9 @@ def login_view(request):
 
 
 def signup_view(request):
-    return render (request, "signup/index.html", )
+    if request.method == 'GET':
+        signup_form = UserForm()
+        return render (request, "signup/index.html",{"signup_form" : signup_form} )
 
 
 def log_out(request):
