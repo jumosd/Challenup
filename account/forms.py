@@ -5,7 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        # fields =("userid","nick","name")
         fields = ["nickname","username","password"]
 
         labels ={
@@ -13,8 +12,8 @@ class UserForm(forms.ModelForm):
             "username" : "아이디",
             "password" : "비밀번호",
         }
-    #     password = forms.CharField()
-    #     password2 = forms.CharField()
+        password = forms.CharField()
+        password2 = forms.CharField()
 
     # def clean_password2(self):
     #     password = self.cleaned_data.get("user_password") # 👈 필드의 입력값 가져오기
@@ -24,12 +23,4 @@ class UserForm(forms.ModelForm):
     #     else:
     #         return password
         
-    # def save(self):
-    #     first_name = self.cleaned_data.get("first_name")
-    #     last_name = self.cleaned_data.get("last_name")
-    #     password = self.cleaned_data.get("password")
-    #     # create_user()에 id(email), email(email), password(password) 값을 순서대로 넣어줘요!
-    #     user = models.User.objects.create_user(email, email, password)
-    #     user.first_name = first_name
-    #     user.last_name = last_name
-    #     user.save()     
+ 

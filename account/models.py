@@ -15,8 +15,8 @@ class User(AbstractUser):
     following = models.ManyToManyField("self")
 
     # 이기능은 추정컨데 url경로로 키워드를 보내주는거같다 
-    def get_absolute_url(self):
-        return reverse("users:detail", kwargs = {"username":self.username})
+    # def get_absolute_url(self):
+    #     return reverse("users:detail", kwargs = {"username":self.username})
     
     def __str__(self):
-        return self.nickname
+        return self.nickname ,self.username
