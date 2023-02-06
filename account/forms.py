@@ -1,19 +1,17 @@
 from django import forms
+from django.forms import ModelForm
 from .models import User
 from django.contrib.auth.forms import UserCreationForm
 
-class UserForm(forms.ModelForm):
+class UserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ["nickname","username","password"]
-
-        labels ={
-            'nickname' : "닉네임",
+        fields = ["username","nickname","password1","password2"]
+        labels={
             "username" : "아이디",
-            "password" : "비밀번호",
+            "nickname" : "닉네임",
         }
-        password = forms.CharField()
-        password2 = forms.CharField()
+    
 
     # def clean_password2(self):
     #     password = self.cleaned_data.get("user_password") # 👈 필드의 입력값 가져오기
@@ -24,3 +22,15 @@ class UserForm(forms.ModelForm):
     #         return password
         
  
+class LoginForm(ModelForm):
+    class Meta:
+        model = User
+        fields=[
+            "username", "password"
+        ]
+        widgets = {'password':forms.PasswordInput}
+        labels={
+            "username": "아이디",
+            "password": "비밀번호",
+        }
+
