@@ -19,9 +19,9 @@ class Webtoon(TimeStamedModel):
     image = models.ImageField(blank=True)
     thumbnail = models.ImageField()
     webtoon_like = models.ManyToManyField(User, related_name= "webtoon_like")
-
+    
 class Comment(TimeStamedModel):
-    author = models.ForeignKey(
+    author = models.ForeignKey( 
         User,
         null=True,
         on_delete=models.CASCADE,
@@ -31,7 +31,7 @@ class Comment(TimeStamedModel):
         on_delete=models.CASCADE,
         related_name="comment_webtoon")
     comment = models.TextField(max_length=1000, blank=True)
-    
+
 
 # 댓글노출여부 - 댓글기능후제작
 # 웹툰소개글 -
@@ -46,3 +46,4 @@ class Comment(TimeStamedModel):
 # 비추천
 # 구독버튼
 
+# 웹툰 생성일을 기준으로 조회수가장많은거 정렬 주에는
