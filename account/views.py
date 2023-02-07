@@ -14,7 +14,7 @@ def login_view(request):
             "loginform": LoginForm
         }
         return render(request, 'login/index.html' ,context)
-    
+
     elif request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']

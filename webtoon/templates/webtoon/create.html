@@ -1,29 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'webtoon:webtooncreate' %}" enctype="multipart/form-data">
 
-    <div>
-        <label for="">필명</label>
-        <input type="text" name="" id="">
+<div class="container">
+
+    <div style="width: 400px; margin: auto;">
+        <form action="{% url 'webtoon:webtooncreate' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label for="">필명</label>
+                <input type="text" name="" id="">
+            </div>
+
+
+            <div class="container">
+
+                <div style="width: 400px; margin: auto;">
+                    <div>
+                        <label for="">작품제목</label>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div>
+                        <label for="">장르</label>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div>
+                        <label for="">작품태그</label>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div>
+                        <label for="">표지</label>
+                        <input type="text" name="" id="">
+                    </div>
+        </form>
     </div>
-    <div>
-        <label for="">작품제목</label>
-        <input type="text" name="" id="">
-    </div>
-    <div>
-        <label for="">장르</label>
-        <input type="text" name="" id="">
-    </div>
-    <div>
-        <label for="">작품태그</label>
-        <input type="text" name="" id="">
-    </div>
-    <div>
-        <label for="">표지</label>
-        <input type="text" name="" id="">
-    </div>
-</form>
+</div>
 
 
 {% endblock %}

@@ -4,14 +4,56 @@ from .models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class UserForm(UserCreationForm):
+    password1 = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(attrs={'class': 'form-control',
+                    'placeholder': '비밀번호를 입력해주세요'})
+    )
+    password2 = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(attrs={'class': 'form-control',
+                    'placeholder': '비밀번호를 다시 입력해주세요'})
+    )
+
     class Meta:
         model = User
-        fields = ["username","nickname","password1","password2"]
+        fields = ["username","nickname"]
         labels={
             "username" : "아이디",
             "nickname" : "닉네임",
         }
-    
+        # def __init__(self, *args, **kwargs):
+        #     super(UserForm, self).__init__(*args, **kwargs)
+
+        #     self.fields['password1'].widget.attrs['class'] = 'form-control'
+        #     self.fields['password2'].widget.attrs['class'] = 'form-control'
+            
+        widgets = {
+            'username': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': '아이디를 입력해주세요'
+                }
+            ),
+            'nickname': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': '닉네임을 입력해주세요'
+                }
+            ),
+            'password1':forms.PasswordInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder': '비밀번호를 입력해주세요'
+                }
+            ),
+            'password2':forms.PasswordInput(
+                attrs={
+                    'class':'form-control',
+                    'placeholder': '비밀번호를 다시 입력해주세요'
+                }
+            ),
+         }
 
     # def clean_password2(self):
     #     password = self.cleaned_data.get("user_password") # 👈 필드의 입력값 가져오기
