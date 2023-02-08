@@ -20,3 +20,7 @@ class User(AbstractUser):
     
     def __str__(self):
         return self.nickname
+    
+    def get_username(self):
+        return self.username
+    

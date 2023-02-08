@@ -8,30 +8,45 @@
         <form action="{% url 'webtoon:webtooncreate' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
-                <label for="">필명</label>
-                <input type="text" name="" id="">
+                웹툰제목
+                {{ form.title }}
             </div>
+        
+            <div>
+                필명
+               {{ form.penname }}
+           </div>
+
+           <div>
+               소개
+               {{ form.description }}
+           </div>
+
+           <div>
+               장르
+               {{ form.genre }}
+               
+           </div>
+
+           <div>
+               태그
+               {{ form.tag }}
+           </div>
+
+           <div>
+               썸네일
+               {{ form.thumbnail }}
+           </div>
+
+           <div>
+               웹툰
+               {{ form.image }}
+           </div>
+
+          
+    
 
 
-            <div class="container">
-
-                <div style="width: 400px; margin: auto;">
-                    <div>
-                        <label for="">작품제목</label>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div>
-                        <label for="">장르</label>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div>
-                        <label for="">작품태그</label>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div>
-                        <label for="">표지</label>
-                        <input type="text" name="" id="">
-                    </div>
         </form>
     </div>
 </div>

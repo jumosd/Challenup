@@ -22,11 +22,7 @@ class UserForm(UserCreationForm):
             "username" : "아이디",
             "nickname" : "닉네임",
         }
-        # def __init__(self, *args, **kwargs):
-        #     super(UserForm, self).__init__(*args, **kwargs)
 
-        #     self.fields['password1'].widget.attrs['class'] = 'form-control'
-        #     self.fields['password2'].widget.attrs['class'] = 'form-control'
             
         widgets = {
             'username': forms.TextInput(
@@ -41,18 +37,7 @@ class UserForm(UserCreationForm):
                     'placeholder': '닉네임을 입력해주세요'
                 }
             ),
-            'password1':forms.PasswordInput(
-                attrs={
-                    'class':'form-control',
-                    'placeholder': '비밀번호를 입력해주세요'
-                }
-            ),
-            'password2':forms.PasswordInput(
-                attrs={
-                    'class':'form-control',
-                    'placeholder': '비밀번호를 다시 입력해주세요'
-                }
-            ),
+            
          }
 
     # def clean_password2(self):

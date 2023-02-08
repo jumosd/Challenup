@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .forms import WebtoonForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def webtoon_main(request):
@@ -10,12 +12,16 @@ def webtoon_menu(request):
 def webtoon_detail(request):
     return render(request, 'webtoon/detail.html')
 
+@login_required
 def webtoon_create(request):
-    if request.method == "POST":
-        pass
+    if request.method == "GET":
+        form = WebtoonForm()
+        context = {
+            'form': form
+        }
+        return render(request,'webtoon/create.html', context)
     else:
-        pass
-        return render(request, "webtoon/create.html")
+        return render(request, "webtoon/main.html")
 
 def webtoon_update(request):
     if request.method == "POST":
