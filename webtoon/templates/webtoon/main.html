@@ -1,10 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1> 웹툰 메인 </h1>
-<a href="{% url 'home' %}">홈</a>
+{% load static %}
+
+<div class="container">
+    <h1> 웹툰 메인 </h1>
+    <a href="{% url 'home' %}">홈</a>
 
 
-<h2><a href="{% url 'webtoon:webtooncreate' %}">웹툰올리기</a></h2>
+    <div class="mainaticle row">
+        <div class="text-start mb-2 fw-bold fs-3 col-6">
+            {% for webtoon in webtoons %}
+
+            <div class="content-card">
+                <div class="card shadow" style="width: 17em;">
+                   
+                        <a href="{% url 'webtoon:webtoondetail' %}">
+                            <img src="{{webtoon.thumbnail.url}}" class="card-img-top" alt="...">
+                        </a>
+                        
+                        <div class="card-body">
+                            <h5 class="card-title text-start">{{webtoon.title}}</h5>
+                            <p class="card-text text-start">{{webtoon.penname}}</p>
+                            <p class="text-end">조회수: <span>999</span></p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-start mb-2 fw-bold fs-3  col-6">
+
+
+            <div class=" shadow ">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+                삭제하기
+            </div>
+
+            <div class="shadow">
+                <h2><a href="{% url 'webtoon:webtooncreate' %}">웹툰올리기</a></h2>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+
 
 
 
