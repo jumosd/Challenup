@@ -17,8 +17,8 @@ def webtoon_menu(request):
 
 def webtoon_detail(request, pk):
     try:
-        webtoontitle = Webtoon.objects.get(pk = pk)
-        context = {"webtoontitle": webtoontitle}
+        webtoon = Webtoon.objects.get(pk = pk)
+        context = {"webtoon": webtoon}
         return render(request, "webtoon/detail.html", context)
     except Webtoon.DoesNotExist: # 👈 존재하지 않는 pk로 접근할 경우,
          return redirect(reverse("home"))
@@ -67,3 +67,8 @@ def webtoon_delete(request):
         # object = Webtoon.objects.get(pk=<object_id>)
         object.delete()
     
+
+
+
+
+

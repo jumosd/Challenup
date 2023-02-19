@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from account.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -22,6 +23,9 @@ class Webtoon(TimeStamedModel):
     webtoon_like = models.ManyToManyField(User, related_name= "webtoon_like")
     genre = models.CharField(max_length=20, blank=True)
     tag = models.CharField(max_length=20,  blank=True)
+
+    def get_absolute_url(self):
+        return reverse('webtoon:webtoondetail', args=[self.pk])
    
 class Comment(TimeStamedModel):
     author = models.ForeignKey( 

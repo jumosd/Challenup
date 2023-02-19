@@ -105,3 +105,16 @@
 .tagbox{
     border: 1px solid gray;   
 }
+
+.webtoon-detail {
+    width: 800px;
+  }
+
+.webtoon-detail > img {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
