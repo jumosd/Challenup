@@ -43,11 +43,15 @@
             삭제하기
         </div>
 
-        <div class="shadow">
+
+        {% if user.is_authenticated %}
+        <dif class="shadow">
             <h2><a href="{% url 'webtoon:webtooncreate' %}">웹툰올리기</a></h2>
-        </div>
+        </dif>
 
-
+      
+        {% endif %}
+        
     </div>
 
 </div>

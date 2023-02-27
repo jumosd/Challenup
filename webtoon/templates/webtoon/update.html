@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div style="width: 500px; margin: auto;">
+    <h1>웹툰 수정하기</h1>
+    <form method="POST" action="{% url 'webtoon:webtoonupdate' pk=webtoon.pk %}">
+        {% csrf_token %}
+        <div>
+            웹툰제목
+            {{ form.title }}
+        </div>
+
+        <div>
+            필명
+            {{ form.penname }}
+        </div>
+
+        <div>
+            소개
+            {{ form.description }}
+        </div>
+        <div>
+            썸네일
+            {{ form.thumbnail }}
+        </div>
+        <div class="webtoonimg" style="width: 300px;">
+            {% if webtoon.thumbnail %}
+            <img src="{{ webtoon.thumbnail.url }}" alt="">
+            {% endif %}
+        </div>
+        <div>
+            웹툰
+            {{ form.image }}
+        </div>
+
+        <div class="webtoonimg" style="width: 300px;">
+            {% if webtoon.image %}
+            <img src="{{ webtoon.image.url }}" alt="">
+            {% endif %}
+        </div>
+
+
+
+        <div>
+            장르
+            <label for="gg1">판타지</label>
+            <input type="radio" name="genre" id="gg1" value="현대물">
+        </div>
+
+        <div>
+
+        </div>
+
+        <div>
+            태그
+            <label for="gg">피폐</label>
+            <input type="checkbox" name="tag" id="gg" value="1">
+        </div>
+
+        <div>
+            <input type="submit" value="올리기">
+            <button>취소</button>
+        </div>
+
+
+    </form>
+</div>
+
+{% endblock %}

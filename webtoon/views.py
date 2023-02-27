@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from .forms import WebtoonForm
 from django.contrib.auth.decorators import login_required
@@ -34,10 +34,10 @@ def webtoon_create(request):
         return render(request,'webtoon/create.html', context)
     elif request.method == 'POST':
         form = WebtoonForm(request.POST, request.FILES)
-        
         webtoon = form.save
-
+        
         author = request.user
+
         title = request.POST['title']
         penname = request.POST['penname']
         description = request.POST['description']
@@ -53,19 +53,35 @@ def webtoon_create(request):
 
 
     
+@login_required
+def webtoon_update(request,pk):
+    webtoon = get_object_or_404(Webtoon, pk=pk)
 
-def webtoon_update(request):
-    if request.method == "POST":
-        pass
+    if request.method == 'POST':
+        form = WebtoonForm(request.POST, request.FILES, instance=webtoon)
+        if form.is_valid():
+            form.save()
+            return redirect('webtoon_detail', pk=pk)
     else:
-        pass
+        form = WebtoonForm(instance=webtoon)
+    context = {
+        'form': form,
+        'webtoon': webtoon,
+    }
+    return render(request, 'webtoon/update.html', context)
 
-def webtoon_delete(request):
+
+
+@login_required
+def webtoon_delete(request, pk):
+    webtoon = get_object_or_404(Webtoon, pk=pk)
     if request.method == "POST":
-
         
-        # object = Webtoon.objects.get(pk=<object_id>)
-        object.delete()
+        webtoon.delete()
+        return redirect(reverse("webtoon:webtoonmain"))
+    else:
+        return redirect(reverse("webtoon:webtoondetail", kwargs={"pk": pk}))
+    
     
 
 

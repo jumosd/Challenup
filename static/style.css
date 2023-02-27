@@ -25,10 +25,8 @@
     width: 100%;
     height:  150px;
     display: flex;
-    
 }
 .home-main-right-webtoon, .home-main-right-webnovel {
-    
     flex-wrap: wrap;
     border: 1px solid gray;
     background-color: darkgray;
@@ -39,8 +37,6 @@
     flex-wrap: wrap;
     margin-top: 1em;
 }
-
-
 .carousel-item-size {
     height: 450px;
     /* object-fit: cover; */
@@ -106,15 +102,11 @@
     border: 1px solid gray;   
 }
 
-.webtoon-detail {
+.webtoonimg{
     width: 800px;
-  }
 
-.webtoon-detail > img {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
-
+.webtoonimg > img{
+    width: 100%;
+    object-fit: cover;
+}

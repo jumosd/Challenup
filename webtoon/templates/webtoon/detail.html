@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
-
 {% load static %}
+
+
 {% block content %}
     <h1>상세 페이지 </h1>
+    <div class="shadow">
+        <h2><a href="{% url 'webtoon:webtoonupdate' pk=webtoon.pk %}">수정하기</a></h2>
+    </div>
+
+    <form action="{% url 'webtoon:webtoondelete' pk=webtoon.pk %}" method="POST">
+    {% csrf_token%}
+    <input type="submit" value="삭제하기">
+
+    </form>
+
 
     <div class="container aticle">
-        {{webtoon.title}}
-
-        <img src="{{webtoon.image.url}}" alt="">
-
-       
+        <div>
+           <h2>제목: {{webtoon.title}}</h2>
+        </div>
+        <div class="webtoonimg">
+            <img src="{{webtoon.image.url}}" alt="" >
+        </div>
         
-        {{webtoon.}}
-        {{webtoon.}}
-        {{webtoon.}}
-        {{webtoon.}}
         
     </div>
 
