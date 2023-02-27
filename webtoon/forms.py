@@ -6,3 +6,4 @@ class WebtoonForm(ModelForm):
     class Meta:
         model = Webtoon
         fields ="__all__"
+        

@@ -5,18 +5,16 @@
 
 <div style="width: 500px; margin: auto;">
     <h1>웹툰 수정하기</h1>
-    <form method="POST" action="{% url 'webtoon:webtoonupdate' pk=webtoon.pk %}">
+    <form method="POST" action="{% url 'webtoon:webtoonupdate' pk=webtoon.pk%}" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
             웹툰제목
             {{ form.title }}
         </div>
-
         <div>
             필명
             {{ form.penname }}
         </div>
-
         <div>
             소개
             {{ form.description }}
@@ -60,7 +58,7 @@
         </div>
 
         <div>
-            <input type="submit" value="올리기">
+            <input type="submit" value="수정하기">
             <button>취소</button>
         </div>
 

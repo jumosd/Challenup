@@ -26,7 +26,10 @@ class Webtoon(TimeStamedModel):
 
     def get_absolute_url(self):
         return reverse('webtoon:webtoondetail', args=[self.pk])
-   
+    def clean(self) -> None:
+        return super().clean()
+
+
 class Comment(TimeStamedModel):
     author = models.ForeignKey( 
         User,

@@ -58,16 +58,24 @@ def webtoon_update(request,pk):
     webtoon = get_object_or_404(Webtoon, pk=pk)
 
     if request.method == 'POST':
-        form = WebtoonForm(request.POST, request.FILES, instance=webtoon)
+        form = WebtoonForm(request.POST, request.FILES, instance=webtoon,)
         if form.is_valid():
+            webtoon.title = form.cleaned_data['title']
+            webtoon.penname = form.cleaned_data['penname']
+            webtoon.thumbnail = form.cleaned_data['thumbnail']
+            webtoon.image = form.cleaned_data['imgage']
+            webtoon.genre = form.cleaned_data['genre']
+            webtoon.tag = form.cleaned_data['tag']
             form.save()
             return redirect('webtoon_detail', pk=pk)
     else:
         form = WebtoonForm(instance=webtoon)
+    print("수정안되쥬??")
     context = {
         'form': form,
         'webtoon': webtoon,
     }
+    
     return render(request, 'webtoon/update.html', context)
 
 
