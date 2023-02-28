@@ -5,5 +5,5 @@ class WebtoonForm(ModelForm):
 
     class Meta:
         model = Webtoon
-        fields ="__all__"
+        fields = ['title','penname','description', 'thumbnail', 'image', 'genre', 'tag']
         

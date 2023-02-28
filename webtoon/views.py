@@ -32,9 +32,10 @@ def webtoon_create(request):
             'form': form
         }
         return render(request,'webtoon/create.html', context)
+
     elif request.method == 'POST':
         form = WebtoonForm(request.POST, request.FILES)
-        webtoon = form.save
+        
         
         author = request.user
 
@@ -44,9 +45,9 @@ def webtoon_create(request):
         image = request.FILES['image']
         thumbnail = request.FILES['thumbnail']
         genre = request.POST['genre']
-        tag = request.POST 
+        tag = request.POST['tag'] 
 
-        Webtoon.objects.create(author= author,title=title,penname=penname,description=description, image=image, thumbnail=thumbnail)
+        Webtoon.objects.create(author= author,title=title,penname=penname,description=description, image=image, thumbnail=thumbnail, genre=genre, tag=tag)
         return redirect('webtoon:webtoonmain')
     return render(request, 'create_webtoon.html')
     
@@ -60,14 +61,8 @@ def webtoon_update(request,pk):
     if request.method == 'POST':
         form = WebtoonForm(request.POST, request.FILES, instance=webtoon,)
         if form.is_valid():
-            webtoon.title = form.cleaned_data['title']
-            webtoon.penname = form.cleaned_data['penname']
-            webtoon.thumbnail = form.cleaned_data['thumbnail']
-            webtoon.image = form.cleaned_data['imgage']
-            webtoon.genre = form.cleaned_data['genre']
-            webtoon.tag = form.cleaned_data['tag']
             form.save()
-            return redirect('webtoon_detail', pk=pk)
+            return redirect('webtoon:webtoondetail', pk=pk)
     else:
         form = WebtoonForm(instance=webtoon)
     print("수정안되쥬??")

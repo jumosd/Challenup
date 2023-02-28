@@ -20,14 +20,14 @@
             {{ form.description }}
         </div>
         <div>
-            썸네일
+            <div class="webtoonimg" style="width: 300px;">
+                {% if webtoon.thumbnail %}
+                <img src="{{ webtoon.thumbnail.url }}" alt="">
+                {% endif %}
+            </div>
             {{ form.thumbnail }}
         </div>
-        <div class="webtoonimg" style="width: 300px;">
-            {% if webtoon.thumbnail %}
-            <img src="{{ webtoon.thumbnail.url }}" alt="">
-            {% endif %}
-        </div>
+        
         <div>
             웹툰
             {{ form.image }}
@@ -61,6 +61,7 @@
             <input type="submit" value="수정하기">
             <button>취소</button>
         </div>
+
 
 
     </form>
