@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 
@@ -15,7 +16,7 @@ class User(AbstractUser):
     following = models.ManyToManyField("self")
     is_creater = models.BooleanField(blank=True, default=0)
     is_procreater = models.BooleanField(blank=True, default=0)
-
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
     # 이기능은 추정컨데 url경로로 키워드를 보내주는거같다 
     # def get_absolute_url(self):
     #     return reverse("users:detail", kwargs = {"username":self.username})
@@ -25,6 +26,11 @@ class User(AbstractUser):
     
     def get_username(self):
         return self.username
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.username)
+        super().save(*args, **kwargs)
 
 
 
