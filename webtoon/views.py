@@ -36,9 +36,8 @@ def webtoon_create(request):
     elif request.method == 'POST':
         form = WebtoonForm(request.POST, request.FILES)
         
-        
-        author = request.user
 
+        author = request.user
         title = request.POST['title']
         penname = request.POST['penname']
         description = request.POST['description']
