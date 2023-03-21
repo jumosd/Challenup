@@ -4,6 +4,10 @@ from account.models import User
 from django.urls import reverse
 
 # Create your models here.
+def upload_to_uid(instance,filename):
+    uid = instance.author.uid
+    return f"webtoon/{uid}/{filename}"
+
 
 #장고패턴임  생성되는 클래스마다 쓰는게아니라 이걸 상속받으면됨
 class TimeStamedModel(models.Model):
@@ -14,20 +18,27 @@ class TimeStamedModel(models.Model):
         abstract = True
 
 class Webtoon(TimeStamedModel):
+    
     author = models.ForeignKey(User,null=True, on_delete=models.CASCADE, related_name = "webtoon_author")
     penname = models.CharField(max_length=20)
     title = models.CharField(max_length=40)
     description = models.CharField(max_length=500)
-    image = models.ImageField(blank=True, upload_to="webtoon")
-    thumbnail = models.ImageField(blank=True, upload_to="webtoonthumnail")
+    image = models.ImageField(blank=True, upload_to=upload_to_uid)
+    thumbnail = models.ImageField(blank=True, upload_to="webtoonthumnail/{author_uid}")
     webtoon_like = models.ManyToManyField(User, related_name= "webtoon_like")
     genre = models.CharField(max_length=20, blank=True)
     tag = models.CharField(max_length=20,  blank=True)
 
     def get_absolute_url(self):
         return reverse('webtoon:webtoondetail', args=[self.pk])
+    
     def clean(self) -> None:
         return super().clean()
+    
+    def __str__(self):
+        return self.title
+    
+    
 
 
 class Comment(TimeStamedModel):
