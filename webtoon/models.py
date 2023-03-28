@@ -2,11 +2,13 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from account.models import User
 from django.urls import reverse
+import os
+
 
 # Create your models here.
 def upload_to_uid(instance,filename):
     uid = instance.author.uid
-    return f"webtoon/{uid}/{filename}"
+    return str(os.path.join("webtoon",str(uid),filename))
 
 
 #장고패턴임  생성되는 클래스마다 쓰는게아니라 이걸 상속받으면됨
@@ -24,16 +26,14 @@ class Webtoon(TimeStamedModel):
     title = models.CharField(max_length=40)
     description = models.CharField(max_length=500)
     image = models.ImageField(blank=True, upload_to=upload_to_uid)
-    thumbnail = models.ImageField(blank=True, upload_to="webtoonthumnail/{author_uid}")
+    thumbnail = models.ImageField(blank=True, upload_to=upload_to_uid)
     webtoon_like = models.ManyToManyField(User, related_name= "webtoon_like")
     genre = models.CharField(max_length=20, blank=True)
     tag = models.CharField(max_length=20,  blank=True)
 
     def get_absolute_url(self):
         return reverse('webtoon:webtoondetail', args=[self.pk])
-    
-    def clean(self) -> None:
-        return super().clean()
+
     
     def __str__(self):
         return self.title
@@ -51,10 +51,11 @@ class Comment(TimeStamedModel):
         Webtoon,
         on_delete=models.CASCADE,
         related_name="comment_webtoon")
-    comment = models.TextField(max_length=1000, blank=True)
+    comment = models.TextField(max_length=1000,)
 
 class Category(TimeStamedModel):
-    title = models.CharField(max_length=100) 
+    title = models.CharField(max_length=100)
+    webtoon = models.ForeignKey(Webtoon, related_name="categories", on_delete=models.CASCADE, default=None, null=True)
 
 
     def __str__(self):

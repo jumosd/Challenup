@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 from django.template.defaultfilters import slugify
-import uuid
 # Create your models here.
 
 
@@ -15,9 +14,9 @@ class User(AbstractUser):
     # 팔로워,팔로우들은 유저끼리 다대다 관계 "slef" 즉 유저 <-> 유저 간의 다대다 관계이다
     follower = models.ManyToManyField("self")   
     following = models.ManyToManyField("self")
-    is_creater = models.BooleanField(blank=True, default=0)
-    is_procreater = models.BooleanField(blank=True, default=0)
-    uid = models.UUIDField(default=uuid.uuid4(), editable=False)
+    is_creater = models.BooleanField(default=False)
+    is_procreater = models.BooleanField(default=False)
+    uid = models.UUIDField(default=uuid.uuid4, editable=False)
     # 이기능은 추정컨데 url경로로 키워드를 보내주는거같다 
     # def get_absolute_url(self):
     #     return reverse("users:detail", kwargs = {"username":self.username})

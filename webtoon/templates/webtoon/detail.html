@@ -9,9 +9,8 @@
     </div>
 
     <form action="{% url 'webtoon:webtoondelete' pk=webtoon.pk %}" method="POST">
-    {% csrf_token%}
-    <input type="submit" value="삭제하기">
-
+        {% csrf_token%}
+        <input type="submit" value="삭제하기">
     </form>
 
 
