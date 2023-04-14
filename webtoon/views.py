@@ -30,11 +30,12 @@ def webtoon_detail(request, pk):
 def webtoon_create(request):
     if request.method == "GET":
         form = WebtoonForm()
-        print (request.user)
+        print(request.user)
         context = {
             'form': form
         }
         return render(request,'webtoon/create.html', context)
+    
     elif request.method == 'POST':
         form = WebtoonForm(request.POST, request.FILES)
         author = request.user
@@ -52,6 +53,8 @@ def webtoon_create(request):
 @login_required
 def webtoon_update(request,pk):
     webtoon = get_object_or_404(Webtoon, pk=pk)
+    if request.user != webtoon.author:
+        print("작성자가 아님")
     if request.method == 'POST':
         form = WebtoonForm(request.POST, request.FILES, instance=webtoon,)
         if form.is_valid():

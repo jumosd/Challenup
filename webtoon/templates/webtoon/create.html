@@ -1,66 +1,74 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+
 <div class="container">
 
     <div style="width: 500px; margin: auto;">
 
         <form action="{% url 'webtoon:webtooncreate' %}" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            <div>
-                웹툰제목
-                {{ form.title }}
+
+            <div class="mb-3 ">
+                <label for="{{form.title.auto_id}}" class="">웹툰제목</label>
+                <input type="text" name="{{form.title.name}}" id="{{form.title.auto_id}}" class="form-control form-control-lg" placeholder="제목을 입력 해주세요">
             </div>
 
-            <div>
-                필명
-                {{ form.penname }}
+            <div class="mb-3">
+                <label for="{{form.penname.auto_id}}">필명</label>
+                <input type="text" name="{{form.penname.name}}" id="{{form.penname.auto_id}}" class="form-control form-control-lg" placeholder="필명을 입력 해주세요">
             </div>
 
-            <div>
-                소개
-                {{ form.description }}
+            <div class="mb-3">
+                <label for="{{form.description.auto_id}}">소개글</label>
+                <textarea class="form-control form-control-lg" aria-label="With textarea" rows="6" name="{{form.description.name}}" placeholder="소개글을 작성해주세요"></textarea>
             </div>
 
-            <!-- <div>
+
+            
+
+
+            <div>
                 장르
                 <div class="genretagbox">
                     <div class="genrebox">
-                        <input type="radio" class="btn-check genrebox_item" name="genre" id="option1" value="MO" autocomplete="off">
-                        <label class="btn btn-secondary" for="option1">현대물</label>
 
-                        <input type="radio" class="btn-check genrebox_item" name="genre" id="option2" value="RO" autocomplete="off">
-                        <label class="btn btn-secondary" for="option2">로맨스</label>
-
-                        <input type="radio" class="btn-check genrebox_item" name="genre" id="option3" value="FA" autocomplete="off">
-                        <label class="btn btn-secondary" for="option3">판타지</label>
-
-                        <input type="radio" class="btn-check genrebox_item" name="genre" id="option4" value="MA" autocomplete="off">
-                        <label class="btn btn-secondary" for="option4">무협/사극</label>
-
-                        <input type="radio" class="btn-check genrebox_item" name="genre" id="option5" value="GA" autocomplete="off">
-                        <label class="btn btn-secondary" for="option5">일상/개그</label>
-
-                        <input type="radio" class="btn-check genrebox_item" name="genre" id="option6" value="AC" autocomplete="off">
-                        <label class="btn btn-secondary" for="option6">스릴러/액션</label>
+                        
+                                <input type="radio" class="btn-check genrebox_item" name="genre" id="option1" value="MO" autocomplete="off">
+                        <label class="btn btn-secondary m-2" for="option1" >현대물</label>
+                        
+                                <input type="radio" class="btn-check genrebox_item" name="genre" id="option2" value="RO" autocomplete="off">
+                        <label class="btn btn-secondary m-2" for="option2">로맨스</label>
+                            
+                                <input type="radio" class="btn-check genrebox_item" name="genre" id="option3" value="FA" autocomplete="off">
+                        <label class="btn btn-secondary m-2" for="option3">판타지</label>
+                           
+                                <input type="radio" class="btn-check genrebox_item" name="genre" id="option4" value="MA" autocomplete="off">
+                        <label class="btn btn-secondary m-2" for="option4">무협/사극</label>
+                                <input type="radio" class="btn-check genrebox_item" name="genre" id="option5" value="GA" autocomplete="off">
+                        <label class="btn btn-secondary m-2" for="option5">일상/개그</label>
+                                <input type="radio" class="btn-check genrebox_item" name="genre" id="option6" value="AC" autocomplete="off">
+                        <label class="btn btn-secondary " for="option6">스릴러/액션</label>
                     </div>
-                    <div class="tagbox" >
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                        <label><input type="checkbox" name="" id="">태그</label>
-                    </div>
+                    
 
+
+                    <div class="tagbox" id="MO_tag">
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="1" value="tagtag">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="2">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="3">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="4">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="5">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="6">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="7">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="8">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="9">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="10">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="11">현대 태그</label>
+                        <label><input class="m-2 btn" type="checkbox" name="tag" id="12">현대 태그</label>
+                    </div>
                 </div>
-
-
-            </div> -->
-
+            </div>
 
             <div>
                 썸네일
@@ -73,33 +81,28 @@
             </div>
 
             <div>
-                장르
-                <label for="gg1">판타지</label>
-                <input type="radio" name="genre" id="gg1" value="현대물">
-            </div>
-            
-            <div>
-                
-            </div>
-
-            <div>
-                태그
-                <label for="gg">피폐</label>
-                <input type="checkbox" name="tag" id="gg" value="1">
-            </div>
-
-            <div>
                 <input type="submit" value="올리기">
                 <button>취소</button>
             </div>
 
-
-
-
-
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        // 모든 태그박스 숨기기
+        $(".tagbox").hide();
 
+        // 장르 라디오 버튼에 클릭 이벤트 리스너 추가
+        $(".genrebox_item").on("click", function() {
+            // 먼저 모든 태그박스를 숨김니다.
+            $(".tagbox").hide();
+
+            // 클릭된 장르에 따라 해당 태그박스를 표시합니다.
+            let genre = $(this).val();
+            $("#" + genre + "_tag").show();
+        });
+    });
+</script>
 
 {% endblock %}

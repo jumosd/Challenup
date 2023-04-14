@@ -69,44 +69,34 @@
 }
 .matching-card:hover{
     background-color: rgb(200, 200, 200);
-
 }
-
 .matching-card-top{
     display: flex;
     justify-content:space-between;
 }
-
 .matching-card-bottom{
     display: flex;   
 }
-
 .matching-card-icon > img{
     border-radius: 50%;
     width: 50px;
     height: 50px;
     object-fit: cover;
 }
-
 .genretagbox{
-    padding: 5px 10px;
-    border: 1px solid gray;
-    display: flex; 
+    display: flex;
+    flex-direction: column;
 }
-
-.genrebox{
-    border: 1px solid gray;
+.tagbox{   
+    display: none;
 }
-
-.tagbox{
-    border: 1px solid gray;   
-}
-
 .webtoonimg{
     width: 800px;
-
 }
 .webtoonimg > img{
     width: 100%;
     object-fit: cover;
+}
+.genreboxlist{
+    display: flex;
 }

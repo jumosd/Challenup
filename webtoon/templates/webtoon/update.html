@@ -23,6 +23,7 @@
             <div class="webtoonimg" style="width: 300px;">
                 {% if webtoon.thumbnail %}
                 <img src="{{ webtoon.thumbnail.url }}" alt="">
+                {% else %}
                 {% endif %}
             </div>
             {{ form.thumbnail }}
@@ -36,21 +37,15 @@
         <div class="webtoonimg" style="width: 300px;">
             {% if webtoon.image %}
             <img src="{{ webtoon.image.url }}" alt="">
+            {% else %}
             {% endif %}
         </div>
-
-
-
         <div>
             장르
             <label for="gg1">판타지</label>
             <input type="radio" name="genre" id="gg1" value="현대물">
         </div>
-
-        <div>
-
-        </div>
-
+   
         <div>
             태그
             <label for="gg">피폐</label>

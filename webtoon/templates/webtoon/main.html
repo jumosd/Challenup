@@ -9,6 +9,7 @@
 
     <div class="mainaticle row">
         <div class="text-start mb-2 fw-bold fs-3 col-6">
+            {% if webtoons %}
             {% for webtoon in webtoons %}
 
             <div class="content-card">
@@ -16,9 +17,9 @@
 
                     <a href="{{ webtoon.get_absolute_url }}">
 
-
+                        
                         <img src="{{webtoon.thumbnail.url}}" class="card-img-top" alt="...">
-
+                  
 
                         <div class="card-body">
                             <h5 class="card-title text-start">{{webtoon.title}}</h5>
@@ -31,6 +32,7 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
 
     <div class="text-start mb-2 fw-bold fs-3  col-6">
